@@ -6,6 +6,8 @@
 #include <GL/glut.h>
 
 int inicialSizeWindow = 500;
+int posicaoXMouse;
+int posicaoYMouse;
 
 void desenhaMinhaCena()
 {
@@ -61,15 +63,32 @@ void teclaPressionada(unsigned char key, int x, int y)
     }
 }
 void gerenciaMouse(int button, int state, int x, int y){
-    if (button == GLUT_LEFT_BUTTON)
+    if (button == GLUT_LEFT_BUTTON){
         printf("Botão esquerdo do mouse pressionado, Posição do mouse: x: %d e y: %d\n", x, y);
-    if (button == GLUT_RIGHT_BUTTON)
+        if (state == GLUT_UP){
+            printf("Botão esquerdo do mouse foi solto, Posição do mouse: x: %d e y: %d\n", x, y);
+        }
+    }
+    if (button == GLUT_RIGHT_BUTTON){
         printf("Botão direito do mouse pressionado, Posição do mouse: x: %d e y: %d\n", x, y);
+        if (state == GLUT_UP){
+            printf("Botão direito do mouse foi solto, Posição do mouse: x: %d e y: %d\n", x, y);
+        }
+    }
+}
+
+void imprimirPosicaoMouse(){
+    printf("Posicao do mouse: x: %d e y: %d\n", posicaoXMouse, posicaoYMouse);
 }
 
 void movimentoMouse(int x, int y){
-    // Imprime a posicao do mouse:
-    printf("Posição do mouse: x: %d e y: %d\n", x, y);
+    // Atualiza a posicao do mouse se ela tiver mudado:
+    if(posicaoXMouse != x || posicaoYMouse != y){
+        posicaoXMouse = x;
+        posicaoYMouse = y;
+        imprimirPosicaoMouse();
+    }
+
 }
 
 int main(int argc, char** argv) {
