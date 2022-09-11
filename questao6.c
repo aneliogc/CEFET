@@ -64,13 +64,17 @@ void teclaPressionada(unsigned char key, int x, int y)
 }
 void gerenciaMouse(int button, int state, int x, int y){
     if (button == GLUT_LEFT_BUTTON){
-        printf("Botão esquerdo do mouse pressionado, Posição do mouse: x: %d e y: %d\n", x, y);
+        if(state == GLUT_DOWN){
+            printf("Botão esquerdo do mouse pressionado, Posição do mouse: x: %d e y: %d\n", x, y);
+        }
         if (state == GLUT_UP){
             printf("Botão esquerdo do mouse foi solto, Posição do mouse: x: %d e y: %d\n", x, y);
         }
     }
     if (button == GLUT_RIGHT_BUTTON){
-        printf("Botão direito do mouse pressionado, Posição do mouse: x: %d e y: %d\n", x, y);
+        if(state == GLUT_DOWN){
+            printf("Botão direito do mouse pressionado, Posição do mouse: x: %d e y: %d\n", x, y);
+        }
         if (state == GLUT_UP){
             printf("Botão direito do mouse foi solto, Posição do mouse: x: %d e y: %d\n", x, y);
         }
